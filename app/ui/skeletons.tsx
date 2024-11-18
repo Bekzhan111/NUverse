@@ -216,3 +216,72 @@ export function InvoicesTableSkeleton() {
     </div>
   );
 }
+
+export function LatestNewsSkeleton() {
+  return (
+    <div className="flex w-full flex-col md:col-span-4">
+      <div className="mb-4 h-8 w-36 rounded-md bg-gray-100" />
+      <div className="flex grow flex-col justify-between rounded-xl bg-gray-100 p-4">
+        <div className="bg-white px-6">
+          {[...Array(5)].map((_, i) => (
+            <div
+              key={i}
+              className="flex flex-row items-center justify-between py-4"
+            >
+              <div className="h-12 w-full rounded-md bg-gray-100" />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function WeeklyCalendarSkeleton() {
+  return (
+    <div className="flex w-full flex-col md:col-span-4">
+      <div className="mb-4 h-8 w-36 rounded-md bg-gray-100" />
+      <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
+        <div className="grid grid-cols-5 gap-2 mb-2">
+          {[...Array(5)].map((_, i) => (
+            <div key={i} className="h-12 rounded-md bg-gray-100" />
+          ))}
+        </div>
+        <div className="grid grid-cols-5 gap-2">
+          {[...Array(5)].map((_, i) => (
+            <div key={i} className="h-[400px] rounded-md bg-gray-100" />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function TodayBirthdaysSkeleton() {
+  return (
+    <div className="flex w-full flex-col md:col-span-4">
+      <div className="flex items-center justify-between mb-4">
+        <div className="h-8 w-36 rounded-md bg-gray-100" />
+        <div className="h-8 w-24 rounded-md bg-gray-100" />
+      </div>
+      
+      <div className="flex gap-4">
+        {[...Array(4)].map((_, i) => (
+          <div
+            key={i}
+            className="flex flex-col rounded-xl bg-gray-50 p-4 min-w-[200px]"
+          >
+            <div className="h-12 w-12 rounded-full bg-gray-200 mb-3" />
+            <div className="flex flex-col gap-2">
+              <div className="h-4 w-24 rounded bg-gray-200" />
+              <div className="h-3 w-16 rounded bg-gray-200" />
+            </div>
+            <div className="mt-auto pt-3 border-t">
+              <div className="h-4 w-full rounded bg-gray-200" />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}

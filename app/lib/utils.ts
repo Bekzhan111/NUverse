@@ -67,3 +67,43 @@ export const generatePagination = (currentPage: number, totalPages: number) => {
     totalPages,
   ];
 };
+
+export function formatDate(date: Date): string {
+  return new Intl.DateTimeFormat('en-US', {
+    weekday: 'short',
+    month: 'short',
+    day: 'numeric'
+  }).format(date);
+}
+
+export function formatTime(time: string): string {
+  return new Date(`2000/01/01 ${time}`).toLocaleTimeString('en-US', {
+    hour: 'numeric',
+    minute: '2-digit'
+  });
+}
+
+export function getEventTypeColor(type: string): string {
+  const colors: { [key: string]: string } = {
+    academic: 'bg-[#457b9d] text-white',
+    research: 'bg-[#6ea2c2] text-white',
+    student: 'bg-[#d69b39] text-white',
+    lecture: 'bg-[#ecd49c] text-gray-800',
+    networking: 'bg-[#fbf6eb] text-gray-800',
+    housing: 'bg-gray-100 text-gray-800',
+    sports: 'bg-green-100 text-green-800'
+  };
+  return colors[type] || 'bg-gray-100 text-gray-800';
+}
+
+export function getNewsCategoryColor(category: string): string {
+  const colors: { [key: string]: string } = {
+    Research: 'bg-[#457b9d] text-white',
+    'Student Life': 'bg-[#d69b39] text-white',
+    Academics: 'bg-[#6ea2c2] text-white',
+    Sports: 'bg-green-100 text-green-800',
+    'Career Services': 'bg-[#ecd49c] text-gray-800',
+    International: 'bg-[#fbf6eb] text-gray-800'
+  };
+  return colors[category] || 'bg-gray-100 text-gray-800';
+}

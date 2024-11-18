@@ -1,10 +1,13 @@
 import { sql } from '@vercel/postgres';
 import {
+  Birthday,
+  CalendarEvent,
   CustomerField,
   CustomersTableType,
   InvoiceForm,
   InvoicesTable,
   LatestInvoiceRaw,
+  NewsItem,
   Revenue,
 } from './definitions';
 import { formatCurrency } from './utils';
@@ -215,5 +218,197 @@ export async function fetchFilteredCustomers(query: string) {
   } catch (err) {
     console.error('Database Error:', err);
     throw new Error('Failed to fetch customer table.');
+  }
+}
+
+export async function fetchLatestNews() {
+  try {
+    const news: NewsItem[] = [
+      {
+        id: '1',
+        title: 'NU Researchers Win Major International Grant',
+        date: '2024-03-20',
+        category: 'Research',
+        summary: 'School of Sciences and Humanities team secures $2M research grant'
+      },
+      {
+        id: '2',
+        title: 'Spring Student Organizations Fair',
+        date: '2024-03-19',
+        category: 'Student Life',
+        summary: 'Join us at the Atrium to discover 50+ student clubs'
+      },
+      {
+        id: '3',
+        title: 'NUSOM Launches New Medical Program',
+        date: '2024-03-18',
+        category: 'Academics',
+        summary: 'New specialization in Digital Health Technologies'
+      },
+      {
+        id: '4',
+        title: 'NU Basketball Team Advances to Finals',
+        date: '2024-03-17',
+        category: 'Sports',
+        summary: 'Victory against ENU in national championship semifinals'
+      },
+      {
+        id: '5',
+        title: 'Career Fair 2024 Announcement',
+        date: '2024-03-16',
+        category: 'Career Services',
+        summary: 'Over 50 companies attending, including Big Tech firms'
+      },
+      {
+        id: '6',
+        title: 'New Partnership with MIT Announced',
+        date: '2024-03-15',
+        category: 'International',
+        summary: 'Joint research program in renewable energy'
+      }
+    ];
+    return news;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch latest news.');
+  }
+}
+
+export async function fetchWeekEvents() {
+  try {
+    const today = new Date();
+    const monday = new Date(today);
+    monday.setDate(monday.getDate() - monday.getDay() + 1);
+
+    const events: CalendarEvent[] = [
+      {
+        id: '1',
+        title: 'University Senate Meeting',
+        date: new Date(monday),
+        time: '10:00 AM',
+        type: 'academic'
+      },
+      {
+        id: '2',
+        title: 'NUSTEM Research Symposium',
+        date: new Date(monday.setDate(monday.getDate() + 1)),
+        time: '2:30 PM',
+        type: 'research'
+      },
+      {
+        id: '3',
+        title: 'Student Government Elections',
+        date: new Date(monday.setDate(monday.getDate() + 1)),
+        time: '11:00 AM',
+        type: 'student'
+      },
+      {
+        id: '4',
+        title: 'Guest Lecture: AI in Healthcare',
+        date: new Date(monday.setDate(monday.getDate() + 1)),
+        time: '3:00 PM',
+        type: 'lecture'
+      },
+      {
+        id: '5',
+        title: 'NUGSB Alumni Networking',
+        date: new Date(monday.setDate(monday.getDate() + 1)),
+        time: '6:30 PM',
+        type: 'networking'
+      },
+      // Additional events spread across the week
+      {
+        id: '6',
+        title: 'Research Lab Meeting',
+        date: new Date(monday),
+        time: '2:00 PM',
+        type: 'research'
+      },
+      {
+        id: '7',
+        title: 'Student Club Fair',
+        date: new Date(monday.setDate(monday.getDate() + 2)),
+        time: '1:00 PM',
+        type: 'student'
+      },
+      {
+        id: '8',
+        title: 'Faculty Meeting',
+        date: new Date(monday.setDate(monday.getDate() + 3)),
+        time: '9:00 AM',
+        type: 'academic'
+      },
+      {
+        id: '9',
+        title: 'Career Workshop',
+        date: new Date(monday.setDate(monday.getDate() + 2)),
+        time: '4:00 PM',
+        type: 'networking'
+      },
+      {
+        id: '10',
+        title: 'Thesis Defense',
+        date: new Date(monday.setDate(monday.getDate() + 1)),
+        time: '10:30 AM',
+        type: 'academic'
+      }
+    ];
+    return events;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch weekly events.');
+  }
+}
+
+export async function fetchTodayBirthdays() {
+  try {
+    const birthdays: Birthday[] = [
+      {
+        id: '1',
+        name: 'Aigerim Kazakhbayeva',
+        date: '1990-11-18',
+        department: 'SSH',
+        position: 'Associate Professor'
+      },
+      {
+        id: '2',
+        name: 'Daniel Kim',
+        date: '1988-11-18',
+        department: 'SEng',
+        position: 'Professor'
+      },
+      {
+        id: '3',
+        name: 'Madina Nurzhanova',
+        date: '1993-11-18',
+        department: 'SMG',
+        position: 'Student'
+      },
+      {
+        id: '4',
+        name: 'Alexander Lee',
+        date: '1985-11-18',
+        department: 'GSB',
+        position: 'Staff'
+      },
+      {
+        id: '5',
+        name: 'Laura Chen',
+        date: '1991-11-18',
+        department: 'NUSOM',
+        position: 'Assistant Professor'
+      },
+      {
+        id: '6',
+        name: 'Azamat Nurlan',
+        date: '1995-11-18',
+        department: 'SSH',
+        position: 'Student'
+      }
+    ];
+    return birthdays;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch today\'s birthdays.');
   }
 }

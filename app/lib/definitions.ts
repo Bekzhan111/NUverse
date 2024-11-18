@@ -86,3 +86,27 @@ export type InvoiceForm = {
   amount: number;
   status: 'pending' | 'paid';
 };
+
+export interface NewsItem {
+  id: string;
+  title: string;
+  date: string;
+  category: string;
+  summary: string;
+}
+
+export interface CalendarEvent {
+  id: string;
+  title: string;
+  date: Date;
+  time: string;
+  type: string;
+}
+
+export interface Birthday {
+  id: string;
+  name: string;
+  date: string;
+  department: string;
+  position: string;
+}

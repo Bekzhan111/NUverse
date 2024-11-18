@@ -4,10 +4,10 @@ import { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Acme Dashboard',
-    default: 'Acme Dashboard',
+    template: '%s | NUVerse',
+    default: 'NUVerse',
   },
-  description: 'The official Next.js Learn Dashboard built with App Router.',
+  description: 'NU Corporate web-portal',
   metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
 };
 

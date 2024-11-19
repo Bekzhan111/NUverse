@@ -412,3 +412,87 @@ export async function fetchTodayBirthdays() {
     throw new Error('Failed to fetch today\'s birthdays.');
   }
 }
+
+export async function fetchNewsPages(query: string) {
+
+  return 3;
+
+  // TODO
+  // const count = await sql`SELECT COUNT(*)
+  //   FROM news
+  //   WHERE title ILIKE ${`%${query}%`}`;
+    
+  // const totalPages = Math.ceil(Number(count.rows[0].count) / ITEMS_PER_PAGE);
+  // return totalPages;
+}
+
+export async function fetchCategories() {
+  const mockCategories = [
+    { id: 1, name: 'Research' },
+    { id: 2, name: 'Student Life' },
+    { id: 3, name: 'Academics' },
+    { id: 4, name: 'Sports' },
+    { id: 5, name: 'Career Services' },
+    { id: 6, name: 'International' }
+  ];
+  
+  return mockCategories;
+
+  // TODO
+}
+
+export async function fetchFilteredNews(query: string, currentPage: number) {
+  try {
+    const mockNews: NewsItem[] = [
+      {
+        id: '1',
+        title: 'NU Researchers Win Major International Grant',
+        date: '2024-03-20',
+        category: 'Research',
+        summary: 'School of Sciences and Humanities team secures $2M research grant'
+      },
+      {
+        id: '2',
+        title: 'NUSOM Partners with Leading Medical Centers',
+        date: '2024-03-19',
+        category: 'Academics',
+        summary: 'New clinical training opportunities for medical students'
+      },
+      {
+        id: '3',
+        title: 'NU Robotics Team Wins Global Competition',
+        date: '2024-03-18',
+        category: 'Student Life',
+        summary: 'Engineering students showcase innovative robotics design'
+      },
+      {
+        id: '4',
+        title: 'Graduate Research Symposium 2024',
+        date: '2024-03-17',
+        category: 'Research',
+        summary: 'Annual showcase of graduate student research projects'
+      },
+      {
+        id: '5',
+        title: 'NU Launches Green Campus Initiative',
+        date: '2024-03-16',
+        category: 'Campus Life',
+        summary: 'New sustainability programs across university facilities'
+      }
+    ];
+
+    // Filter based on query
+    const filteredNews = query
+      ? mockNews.filter(news =>
+          news.title.toLowerCase().includes(query.toLowerCase()) ||
+          news.category.toLowerCase().includes(query.toLowerCase()) ||
+          news.summary.toLowerCase().includes(query.toLowerCase())
+        )
+      : mockNews;
+
+    return filteredNews;
+  } catch (error) {
+    console.error('Error:', error);
+    throw new Error('Failed to fetch filtered news.');
+  }
+}

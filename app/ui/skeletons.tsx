@@ -285,3 +285,51 @@ export function TodayBirthdaysSkeleton() {
     </div>
   );
 }
+
+export function NewsTableSkeleton() {
+  return (
+    <div className="mt-6 flow-root">
+      <div className="inline-block min-w-full align-middle">
+        <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
+          <div className="md:hidden">
+            {[...Array(5)].map((_, i) => (
+              <div key={i} className="mb-2 w-full rounded-md bg-gray-200 p-4">
+                <div className="h-6 w-3/4 rounded bg-gray-300" />
+              </div>
+            ))}
+          </div>
+          <table className="hidden min-w-full text-gray-900 md:table">
+            <thead className="rounded-lg text-left text-sm font-normal">
+              <tr>
+                <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
+                  <div className="h-6 w-32 rounded bg-gray-200" />
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  <div className="h-6 w-24 rounded bg-gray-200" />
+                </th>
+                <th scope="col" className="px-3 py-5 font-medium">
+                  <div className="h-6 w-24 rounded bg-gray-200" />
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white">
+              {[...Array(5)].map((_, i) => (
+                <tr key={i} className="border-b">
+                  <td className="whitespace-nowrap px-4 py-4 sm:pl-6">
+                    <div className="h-6 w-32 rounded bg-gray-200" />
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-4">
+                    <div className="h-6 w-24 rounded bg-gray-200" />
+                  </td>
+                  <td className="whitespace-nowrap px-3 py-4">
+                    <div className="h-6 w-24 rounded bg-gray-200" />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  );
+}

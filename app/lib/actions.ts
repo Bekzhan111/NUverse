@@ -137,3 +137,31 @@ export async function authenticate(
       throw error;
     }
   }
+
+  const NewsSchema = z.object({
+    title: z.string(),
+    category: z.string(),
+    content: z.string(),
+    status: z.enum(['draft', 'published']),
+  });
+  
+  export async function createNews(formData: FormData) {
+    const { title, category, content, status } = NewsSchema.parse({
+      title: formData.get('title'),
+      category: formData.get('category'),
+      content: formData.get('content'),
+      status: formData.get('status'),
+    });
+  
+    try {
+        // TODO
+        console.log('News created');
+    } catch (error) {
+        return {
+            message: 'Error: Failed to Create News.',
+        };
+    }
+  
+    revalidatePath('/dashboard/news');
+    redirect('/dashboard/news');
+  }
